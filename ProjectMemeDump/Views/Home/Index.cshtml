@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MemeDump2.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="postbutton">
+    <a class="nav-link text-dark" align="center" asp-area="" asp-controller="Posts" asp-action="Create">Posztolás</a>
+</div>
+
+<table align="right" class="table">
+    <tbody>
+        
+@if (Model != null && Model.Any())
+{
+    @foreach (var item in Model)
+    {
+    <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">
+        <div class="post">
+                    <div>
+                        <h1>@item.Title</h1>
+                    </div>
+                    
+                    <div>
+                        <p>@item.Content</p>
+                    </div>
+
+                    <div>
+                        <img src="~/Uploads/@item.ImagePath" alt="@item.ImagePath"></img>
+                    </div>
+
+        </div>
+    </a>
+        @*<div>
+            <tr align="center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+            </tr>
+            <tr align="center">
+                <td>
+                    <img src="~/Uploads/@item.ImagePath" alt="@item.ImagePath" style="width: 320px; height: 180px;"/>
+                </td>
+                
+            </tr>
+            <tr align="center">
+                <td>
+                    <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">Részletek</a> |
+                    <a asp-controller="Posts" asp-action="Delete" asp-route-id="@item.Id">Törlés</a>
+                </td>
+            </tr>
+        </div>*@
+    }
+
+}
+else{
+    <p align="center">Nagy itt a csend...</p>
+}
+    </tbody>
+</table>

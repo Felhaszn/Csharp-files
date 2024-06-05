@@ -1,0 +1,15 @@
+﻿@model MemeDump2.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+    <div class="details">
+        <img src="~/Uploads/@Model.ImagePath" alt="@Model.ImagePath"></img>
+        <h1>@Model.Title</h1>
+        <p>@Model.Content</p>
+        <div align="center">
+            <a asp-controller="Home" asp-action="Index" align="center">Vissza a főoldalra</a>
+            <a asp-controller="Posts" asp-action="Delete" asp-route-id="@Model.Id">Törlés</a>
+        </div>
+    </div>

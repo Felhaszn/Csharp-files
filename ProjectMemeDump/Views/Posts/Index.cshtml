@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MemeDump2.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 align="center">Találatok</h1>
+
+<table class="table">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+                <div class="post">
+                        <div>
+                            <h1>@item.Title</h1>
+                        </div>
+
+                        <div>
+                            <p>@item.Content</p>
+                        </div>
+
+                        <div>
+                            <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">
+                                <img src="~/Uploads/@item.ImagePath" alt="@item.ImagePath"></img>
+                            </a>
+                        </div>
+                </div>
+
+        }
+
+    }
+    else
+    {
+        <p align="center">Nincs találat erre a kifejezésre...</p>
+    }
+    </tbody>
+</table>
